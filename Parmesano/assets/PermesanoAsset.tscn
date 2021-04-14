@@ -1,0 +1,185 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://sprites/skate_rat.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 59.7765, 56.4158 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "caer"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 36, 37, 38, 39, 40, 41 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "deslizar"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 14, 15, 16, 17 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "frenar"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 20, 21, 22 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "impulsar"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "saltar"
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 28, 29, 30, 31, 32 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "deslizar"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "frenar"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "impulsar"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "saltar"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachine" id=21]
+states/deslizando/node = SubResource( 8 )
+states/deslizando/position = Vector2( 540, 162 )
+states/frenando/node = SubResource( 9 )
+states/frenando/position = Vector2( 170, 220 )
+states/idle/node = SubResource( 10 )
+states/idle/position = Vector2( 327, 125 )
+states/impulsando/node = SubResource( 11 )
+states/impulsando/position = Vector2( 143, 41 )
+states/saltando/node = SubResource( 12 )
+states/saltando/position = Vector2( 467, 41 )
+transitions = [ "idle", "impulsando", SubResource( 13 ), "impulsando", "idle", SubResource( 14 ), "idle", "frenando", SubResource( 15 ), "frenando", "idle", SubResource( 16 ), "idle", "saltando", SubResource( 17 ), "saltando", "deslizando", SubResource( 18 ), "deslizando", "idle", SubResource( 19 ), "idle", "deslizando", SubResource( 20 ) ]
+start_node = "idle"
+graph_offset = Vector2( -3.06368e-05, 0 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=22]
+
+[node name="Parmesano" type="KinematicBody2D" groups=[
+"parmesano",
+]]
+position = Vector2( 512.578, 309.683 )
+
+[node name="player" type="Sprite" parent="."]
+position = Vector2( -9.51719, 147.248 )
+texture = ExtResource( 1 )
+vframes = 5
+hframes = 9
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0827637, 135.26 )
+shape = SubResource( 1 )
+
+[node name="Animaciones" type="AnimationPlayer" parent="."]
+anims/caer = SubResource( 2 )
+anims/deslizar = SubResource( 3 )
+anims/frenar = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/impulsar = SubResource( 6 )
+anims/saltar = SubResource( 7 )
+
+[node name="stateMachine" type="AnimationTree" parent="."]
+tree_root = SubResource( 21 )
+anim_player = NodePath("../Animaciones")
+active = true
+parameters/playback = SubResource( 22 )
