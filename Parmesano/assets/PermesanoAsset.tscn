@@ -3,7 +3,7 @@
 [ext_resource path="res://sprites/skate_rat.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 59.7765, 56.4158 )
+extents = Vector2( 41.2655, 56.4158 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "caer"
@@ -128,12 +128,12 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id=21]
 states/deslizando/node = SubResource( 8 )
@@ -146,7 +146,7 @@ states/impulsando/node = SubResource( 11 )
 states/impulsando/position = Vector2( 143, 41 )
 states/saltando/node = SubResource( 12 )
 states/saltando/position = Vector2( 467, 41 )
-transitions = [ "idle", "impulsando", SubResource( 13 ), "impulsando", "idle", SubResource( 14 ), "idle", "frenando", SubResource( 15 ), "frenando", "idle", SubResource( 16 ), "idle", "saltando", SubResource( 17 ), "saltando", "deslizando", SubResource( 18 ), "deslizando", "idle", SubResource( 19 ), "idle", "deslizando", SubResource( 20 ) ]
+transitions = [ "idle", "impulsando", SubResource( 13 ), "impulsando", "idle", SubResource( 14 ), "idle", "frenando", SubResource( 15 ), "frenando", "idle", SubResource( 16 ), "idle", "saltando", SubResource( 17 ), "deslizando", "idle", SubResource( 18 ), "idle", "deslizando", SubResource( 19 ), "saltando", "idle", SubResource( 20 ) ]
 start_node = "idle"
 graph_offset = Vector2( -3.06368e-05, 0 )
 
@@ -162,6 +162,7 @@ position = Vector2( -9.51719, 147.248 )
 texture = ExtResource( 1 )
 vframes = 5
 hframes = 9
+frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
